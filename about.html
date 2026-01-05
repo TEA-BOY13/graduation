@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About_Me</title>
+</head>
+<style>
+    body{
+      background:linear-gradient(135deg,skyblue,aliceblue);
+    }
+    /* new line */
+    .sidenav {
+    text-align: center;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    opacity: 0.9;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+  }
+  
+  .sidenav a:hover,
+  .offcanvas a:focus {
+    color: #f1f1f1;
+  }
+  
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+  }
+  #a6{
+        background-color: aquamarine;
+    }
+    a:hover{
+    box-shadow: 3px 4px 3px aqua;
+    }
+  #logo{
+     height: 80px;
+     width: 120px;
+     margin: auto;
+     margin-top: -50px;
+     margin-left: 50px;
+     border-radius: 50px;
+     box-shadow: 3px 4px 3px aqua;
+  }
+  hr{
+    box-shadow: 10px 10px 8px;
+    margin-top: 10%;
+  }
+  footer{
+    color: aqua;
+    font-size: medium;
+    font-weight: ligther;
+    font-style: italic;
+    margin-top: 0%;
+    margin-left: 50px;
+  }
+    #div1{
+        height: auto;
+        width: auto;
+        display: flex;
+    
+    }
+    #div2, #mee{
+        height: 200px;
+        width: 115px;
+    }
+    #div3{
+        height: 200px;
+        width: 200px;
+        background-color: aquamarine;
+        opacity: 0.8;
+    }
+    #about{
+        font-size: 12px;
+        text-transform: capitalize;
+    }
+    #h{
+        text-align: center;
+        font-size: large;
+        font-weight: bolder;
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        text-transform: capitalize;
+       
+    }
+    #skills{
+        background-color: aquamarine;
+        height: 200px;
+        width: 210px;
+        margin-top: 20px;
+        opacity: 0.8;
+    }
+    #skill1{
+        height: auto;
+        width: auto;
+        display: flex;
+    }
+    #skim, #sim{
+        height: 200px;
+        width: 115px;
+        margin-top: 10px;
+        margin-left: 13px;
+    }
+    #school{
+        background-color: aquamarine;
+        height: auto;
+        width: 310px;
+        margin-top: 20px;
+        margin-left: 25px;
+        opacity: 0.8;
+    }
+    #sp{
+        font-size: 14px;
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bolder;
+        margin: auto;
+        margin-left: 30%;
+        text-align: right;
+        color: red;
+    }
+    #l1{
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    #l2{
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: capitalize;
+        
+    }
+    #con1{
+        width: 90%;
+        height: 20px;
+        margin-top: -10px;
+        background-color: red;
+        border-radius: 10px;
+    }
+    #prog1{
+        height: 20px;
+        width: 98%;
+        text-align: right;
+        background-color: green;
+        border-radius: 10px;
+
+    }
+    #prog2{
+        height: 20px;
+        width: 60%;
+        text-align: right;
+        background-color: olive;
+        border-radius: 10px;
+
+    }
+    #prog3{
+        height: 20px;
+        width: 45%;
+        text-align: right;
+        background-color: goldenrod;
+        border-radius: 10px;
+
+    }
+    #dashb{
+        height: 35px;
+        width: 30px;
+        border-radius: 30px;
+        margin-top: -20%;
+        margin-left: 28px;
+        display: flex;
+        float: right;
+        box-shadow: 3px 3px 3px;
+        
+    }
+    #dashb1{
+        height: 35px;
+        width: 30px;
+        border-radius: 50px;
+        margin-top: -20%;
+        opacity: 0.5;
+        margin-left: 2px;
+        display: flex;
+        float: left;
+        box-shadow: 3px 3px 3px;
+
+    }
+    /* new */
+    form{
+    height: auto;
+    width: 322px;
+    border-radius: 15px;
+    background-color:#0c7078;
+    box-shadow: 3px 3px 4px;
+    margin-left: 22px;
+    margin-top: 5%;
+    opacity: 0.8;
+}
+#twi{
+    height: 30px;
+    width: 22px;
+    margin-top: 0%;
+    margin-left:2%;
+    margin-bottom: -15px;
+    border-radius: 45%;
+}
+#img1{
+    height: 30px;
+    width: 22px;
+    margin-top: 0%;
+    margin-left:2%;
+    margin-bottom: -15px;
+    border-radius: 45%; 
+        }
+#img2{
+    height: 30px;
+    width: 22px;
+    margin-left:2%;
+    margin-top: 4%;
+    margin-bottom: -15px;
+    border-radius: 45%; 
+        }
+#img3{
+    height: 30px;
+    width: 20px;
+    margin-left:2%;
+    margin-top: 4%;
+    margin-bottom: -15px;
+    border-radius: 45%;  
+        }
+#img4{
+    height: 30px;
+    width: 22px;
+    margin-left:2%;
+    margin-top: 4%;
+    margin-bottom: -15px;
+    border-radius: 45%; 
+        }
+        #abba{
+     height: 50px;
+    width: 50px;
+    margin-left:40%;
+    margin-top: -7%;
+    border-radius: 45%; 
+        }
+        a{
+            font-size: large;
+            font-weight: bolder;
+            color:#072e36;
+        }
+        #but1{
+            font-size: large;
+            font-weight: bolder;
+            color:#072e36;
+            background-color: #0c7078;
+            border: none;
+        }
+        #but2{
+            font-size: large;
+            font-weight: bolder;
+            color:#072e36;
+            background-color: #0c7078;
+            border: none;
+        }
+        #but3{
+            font-size: large;
+            font-weight: bolder;
+            color:#072e36;
+            background-color: #0c7078;
+            border: none;
+        }
+        #but4{
+            font-size: large;
+            font-weight: bolder;
+            color:#072e36;
+            background-color: #0c7078;
+            border: none;
+        }
+        #but5{
+            font-size: large;
+            font-weight: bolder;
+            margin-bottom: 3%;
+            color:#072e36;
+            background-color: #0c7078;
+            border: none;
+        }
+       a:hover{
+    box-shadow: 3px 4px 3px aqua;
+    }
+</style>
+<body>
+    <div id="dashboard">
+        <div id="mySidenav" class="sidenav">
+            <img src="images/logo.jpg" alter="image not foundn!" id="logo">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+              <a href="gallery.html" id="a0">Home</a>
+              <a href="about.html" id="a6">About_Me</a>
+              <hr>
+              <footer>
+              &copyTea-boy13 2025
+              </footer>
+            </div>
+            <span style="font-size:30px;cursor:pointer; float: left; color: red;" onclick="openNav()">☰ </span> 
+        
+    </div>
+    <div id="div1">
+        <div id="div2">
+            <img src="images/mee5.jpg" alt="image not found" id="mee">
+        </div>
+
+        <div id="div3">
+            <h1 id="h">About_Me</h1>
+            <img src="images/nacos.jpg" alt="image not founds!" id="dashb">
+            <img src="images/logo.jpg" alt="image not founds!" id="dashb1">
+            <p id="about">
+                I Mustapha Abubakar Iliyasu<br>(TEABOY13)<br>
+                 from yobe state and i am a software developer with over
+                  4 years experient on web application development.<br>
+                  you are free to contact me about any kind of web design 
+                  or software development and also a penetration testing
+            </p>
+           
+        </div>
+
+    </div>
+
+    <div id="skill1">
+        <div id="skim">
+            <img src="images/mee3.jpg" alt="image not found!" id="sim">
+        </div>
+
+    <div id="skills">
+        <h1 id="h">My_Skills</h1>
+        <img src="images/nacos.jpg" alt="image not founds!" id="dashb">
+        <img src="images/logo.jpg" alt="image not founds!" id="dashb1">
+
+        <ol>
+            <li id="l1"> web application development</li>
+            <div id="con1">
+                <div id="prog1">
+                    <p id="about">99%</p>
+                </div>
+            </div>
+            <li id="l1">software development</li>
+            <div id="con1">
+                <div id="prog2">
+                    <p id="about">60%</p>
+                </div>
+            </div>
+            <li id="l1">android application</li>
+            <div id="con1">
+                <div id="prog3">
+                    <p id="about">45%</p>
+                </div>
+            </div>
+        </ol>
+
+    </div>
+    </div>
+    <div id="school">
+        <h1 id="h">schools_Attended</h1>
+        <ul>
+            <li id="l2">Sabon layi primary school potiskum <br><span id="sp">2007 - 2013</span></li>
+            <li id="l2">Government science and tech college potiskum<br> <span id="sp">2016  - 2019</span></li>
+            <li id="l2">Yobe state university damaturu (B.S.c Computer Science)<br><span id="sp">2020 - 2025</span></li>
+            <li id="l2">3Million technical tallent(3MTT, software Dev.) cohort 3<br> <span id="sp">2023 till date</span></li>
+            <li id="l2">Linkedin penetration testing certificate<br> <span id="sp">2026</span></li>
+        </ul>
+    </div>
+
+    <form>
+        <img src="images/logo.jpg" id="abba">
+        <h3 style="margin-left: 30%; color: #072e36; text-shadow: 2PX 2px 2PX aliceblue; font-weight: bolder;">FOLLO ME ON</h3>
+        <p><a href="https://x.com/TEABOY71?t=q2FvRq-xbcR-slpv1clRQQ&s=09" ><img src="images/twitter.png" id="twi"><button id="but1">- twitter</button></a></p>
+        <p><a href="https://wa.me/2348102758144"><img src="images/whatsapp.JPG" id="img1"><button id="but2">- 08102758144 </button></a></p>
+        <p><a href="mabubakariliya@gmail.com"><img src="images/gmail.JPG" id="img2"><button id="but3">- mabubakariliya@gmail.com</button></a></p>
+        <p><a href=" https://ng.linkedin.com/in/mustapha-abubakar-iliyasu-54a08a219 "><img src="images/in.png" id="img3"><button id="but4">- Linkedin</button></a></p>
+        <p><a href="https://www.sololearn.com/profile/26692867/?ref=app" ><img src="images/sololearn.JPG" id="img4"><button id="but5">- Mustapha abubakar iliyasu</button></a></p>
+    </form>
+
+    <hr>
+    <footer>
+        &copy By_Tea-Boy 2025
+    </footer>
+    <script>
+        function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  var mee1 = [
+        'images/mee5.jpg', 'images/teamom.jpg'
+
+  ];
+  var tim = setInterval(tea, 2000);
+  var num4 = 0;
+  function tea(){
+    var mee = document.getElementById('mee');
+    num4++;
+    if(num4 == mee1.length){
+        num4 = 0;
+    }
+
+    mee.src = mee1[num4];
+  }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        function salert(){
+        Swal.fire({
+              icon:'warning',
+              title:'FEATURES',
+              text:'entire university map is coming soon',
+              footer:'&copyTea-boy13 2025'
+          });
+        }
+        function ppq(){
+        Swal.fire({
+              icon:'warning',
+              title:'pass_questions',
+              text:'this action will be available soon we are currently working on it be patient.',
+              footer:'&copyTea-boy13 2025'
+          });
+        }
+    </script>
+</body>
+</html>

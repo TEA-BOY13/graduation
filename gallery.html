@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Gallery</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#222">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background:linear-gradient(135deg,rgb(219, 237, 245),aliceblue);
+}
+
+/* ===== HEADER ===== */
+header {
+  background: #222;
+  color: white;
+}
+
+.nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.menu-btn {
+  font-size: 26px;
+  cursor: pointer;
+  display: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+nav button.active {
+  background: #007bff;
+  border-radius: 5px;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 13px;
+}
+
+.item {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.caption {
+  padding: 8px 10px;
+  font-size: 14px;
+  background: #fff;
+  color: #222;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+}
+
+.control {
+  position: absolute;
+  top: 50%;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* ===== LOGOUT ===== */
+.logout-btn {
+  background: #ff4b5c;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 800px) {
+  .menu-btn {
+    display: block;
+  }
+  nav {
+    display: none;
+    flex-direction: column;
+  }
+  nav.show { display: flex;
+  }
+  #sup{
+    height: 800px;
+    overflow-y: scroll;
+  }
+  a{
+    margin: auto;
+    text-align: center;    
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-top">
+    <div>
+      <h3 style="display:inline;">Gallery</h3><br>
+      <span id="studentIdDisplay"></span>
+    </div>
+    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+  </div>
+
+  <nav id="nav">
+    <button class="active" onclick="loadGeneral(this)">General</button>
+    <button onclick="loadSolo(this)">Solo</button>
+    <button onclick="loadCategory('duo',this)">Duo</button>
+    <button onclick="loadCategory('exco',this)">Exco</button>
+    <!-- <button onclick="loadCategory('staffs',this)">Staffs</button> -->
+    <a href="about.html"><button>About Me</button></a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+<div id="sup">
+<div class="gallery" id="gallery"></div>
+
+<div class="lightbox" id="lightbox">
+  <span class="control prev" onclick="prevImage()">❮</span>
+  <img id="lightboxImg">
+  <span class="control next" onclick="nextImage()">❯</span>
+  <span class="close" onclick="closeLightbox()">✕</span>
+</div>
+</div>
+<script>
+/* ===== LOGIN CHECK ===== */
+const student = localStorage.getItem("loggedInStudent");
+if (!student) {
+  Swal.fire("Access denied","Please login first","warning")
+  .then(()=>location.href="index.html");
+}
+document.getElementById("studentIdDisplay").textContent = " | ID: " + student;
+
+/* ===== NAV ===== */
+const nav = document.getElementById("nav");
+function toggleMenu(){ nav.classList.toggle("show"); }
+
+/* our informations*/
+const soloInfo = {
+  1:{name:"Musa Madaki", phone:"08166930194", specialization:"Web Development"},
+  2:{name:"Braji", phone:"08087654321", specialization:"Artificial Intelligence"},
+  3:{name:"Said Muhammad", phone:"07067297918", specialization:"Web Development"},
+  4:{name:"Muhammad Hussaini", phone:"09018439950", specialization:"Data Analysis"},
+  5:{name:"Muhammad Auwal", phone:"07061116148", specialization:"Software Development"},
+  6:{name:"Musatapha A Iliyasu", phone:"08102758144", specialization:"Ethical Hacking"},
+  7:{name:"Musatapha Khalid Yakubu", phone:"08087912187", specialization:"Machine Leaning/Artificial Intelligence"},
+  8:{name:"Abdullahi muhammad", phone:"08102758144", specialization:"Web Applications"},
+  9:{name:"Hayatu Muhammad ABdullahi", phone:"08145423909", specialization:"Machine Leaning"},
+  10:{name:"Auwal Suleiman", phone:"08164645604", specialization:"Software Development"},
+  11:{name:""},
+  12:{name:"muhammad muhammad"},
+  13:{name:"Ismail Muhammad Sani", phone:"08062905879", specialization:"Junior Developer"},
+  14:{name:"muhammad muhammad"},
+  15:{name:"Usman Dahiru Saidu", phone:"Null", specialization:"Crypto Trading"},
+  16:{name:"KILLER", phone:"07069411759", specialization:"Data Management"},
+  17:{name:"Abdulmudallib Abubakar Adaya", phone:"08136483055", specialization:"Priory Algorithm"},
+  18:{name:"Maisanda", phone:"", specialization:""},
+  19:{name:"Adamu Musa Dauda", phone:"07064710960", specialization:"Coding..."},
+  20:{name:"Aiman Yusuf Lawan", phone:"Null", specialization:"ChatGPT"},
+  21:{name:"Sagir Muhammad Kabir", phone:"08147354770", specialization:"Developer"},
+  22:{name:"Zulkifulu Umar Sanda", phone:"07080063703", specialization:""}
+};
+
+let currentImages = [];
+let currentIndex = 0;
+
+function setActive(btn){
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  nav.classList.remove("show");
+}
+
+/* FOR GENERAL  */
+function loadGeneral(btn){
+  setActive(btn);
+  loadImages("general",100);
+}
+
+/* FOR SOLO (FIXED)  */
+function idToImage(id){
+  return id.replaceAll("/", "_");
+}
+
+function loadSolo(btn){
+  setActive(btn);
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+  currentImages = [];
+
+  const myId = localStorage.getItem("loggedInStudent");
+  const myImage = `images/solo/${idToImage(myId)}.jpg`;
+
+  /* ADD LOGGED-IN STUDENT FIRST */
+  if(myId){
+    const myBox = document.createElement("div");
+    myBox.className = "item";
+    myBox.style.border = "3px solid #007bff";
+
+    myBox.innerHTML = `
+      <img src="${myImage}" 
+           onclick="openLightbox(0)"
+           onerror="this.parentElement.remove()">
+      <div class="caption">
+        <strong>you</strong><br>
+        ${myId}
+      </div>
+    `;
+
+    currentImages.push(myImage);
+    gallery.appendChild(myBox);
+  }
+
+  /* FOR ADD OTHER SOLO IMAGES */
+  Object.keys(soloInfo).forEach(i=>{
+    const src = `images/solo/solo${i}.jpg`;
+
+    // to avoid duplicate if it is the same image
+    if(src === myImage) return;
+
+    const box = document.createElement("div");
+    box.className = "item";
+
+    box.innerHTML = `
+      <img src="${src}" onclick="openLightbox(${currentImages.length})">
+      <div class="caption">
+        <strong>${soloInfo[i].name}</strong><br>
+        Phone: ${soloInfo[i].phone}<br>
+        Specialization: ${soloInfo[i].specialization}
+      </div>
+    `;
+
+    currentImages.push(src);
+    gallery.appendChild(box);
+  });
+}
+
+
+/* OTHER CATEGORIES */
+function loadCategory(folder,btn){
+  setActive(btn);
+  loadImages(folder,20);
+}
+
+function loadImages(folder,count){
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+  currentImages = [];
+
+  for(let i=1;i<=count;i++){
+    const src = `images/${folder}/${folder}${i}.jpg`;
+    currentImages.push(src);
+
+    const box = document.createElement("div");
+    box.className = "item";
+    box.innerHTML = `<img src="${src}" onclick="openLightbox(${i-1})">`;
+    gallery.appendChild(box);
+  }
+}
+
+/* FOR LIGHTBOX */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+function openLightbox(i){
+  currentIndex = i;
+  lightboxImg.src = currentImages[i];
+  lightbox.style.display = "flex";
+}
+
+function closeLightbox(){ lightbox.style.display = "none"; }
+function nextImage(){ currentIndex=(currentIndex+1)%currentImages.length; openLightbox(currentIndex); }
+function prevImage(){ currentIndex=(currentIndex-1+currentImages.length)%currentImages.length; openLightbox(currentIndex); }
+
+function logout(){
+  localStorage.removeItem("loggedInStudent");
+  location.href="index.html";
+}
+
+/* DEFAULT */
+loadGeneral(document.querySelector("nav button"));
+
+/*  PWA  */
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+
+</body>
+</html>

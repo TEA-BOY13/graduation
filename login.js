@@ -1,0 +1,163 @@
+// ---------------- STUDENT DATABASE ----------------
+const students = {
+  "u/cs/19/167": "95759846ch",
+  "u/cs/19/181": "66246463db",
+  "u/cs/19/183": "97438875fd",
+  "u/cs/19/184": "97441552hd",
+
+  "u/cs/20/002": "20910392af",
+  "u/cs/20/005": "22172452ia",
+  "u/cs/20/007": "22224231ga",
+  "u/cs/20/009": "20347385jf",
+  "u/cs/20/010": "20029387hau",
+  "u/cs/20/011": "22180422df",
+  "u/cs/20/013": "22174177af",
+  "u/cs/20/014": "22184760af",
+  "u/cs/20/015": "22011259gf",
+  "u/cs/20/016": "22180681ha",
+  "u/cs/20/017": "20347375fa",
+  "u/cs/20/018": "22178908af",
+  "u/cs/20/019": "20347311if",
+  "u/cs/20/020": "22171874cf",
+  "u/cs/20/021": "20347267ca",
+
+  "u/cs/20/025": "22172356if",
+  "u/cs/20/026": "29709178af",
+  "u/cs/20/028": "22180613da",
+  "u/cs/20/030": "22172777ha",
+  "u/cs/20/032": "22171724bf",
+  "u/cs/20/034": "21495652if",
+  "u/cs/20/035": "22185936bf",
+  "u/cs/20/036": "22174977ja",
+  "u/cs/20/038": "22177174da",
+  "u/cs/20/039": "20347438ca",
+  "u/cs/20/040": "22178485da",
+  "u/cs/20/042": "22173288ia",
+  "u/cs/20/044": "22171832ef",
+  "u/cs/20/045": "21986060ja",
+  "u/cs/20/047": "20232565bf",
+  "u/cs/20/048": "22181999df",
+  "u/cs/20/049": "29760056cf",
+  "u/cs/20/050": "22181059ia",
+
+  "u/cs/20/051": "22172583ja",
+  "u/cs/20/053": "29850571da",
+  "u/cs/20/054": "21033821hf",
+  "u/cs/20/057": "22172871hf",
+  "u/cs/20/058": "22179217hf",
+  "u/cs/20/060": "20764152if",
+  "u/cs/20/062": "22121977ea",
+  "u/cs/20/064": "22177594df",
+  "u/cs/20/065": "23331838cf",
+  "u/cs/20/067": "29834450hf",
+  "u/cs/20/068": "20804798ga",
+  "u/cs/20/069": "21172594df",
+  "u/cs/20/071": "22175704gf",
+  "u/cs/20/074": "21172174ef",
+  "u/cs/20/075": "22176183ef",
+  "u/cs/20/076": "22176319da",
+  "u/cs/20/078": "22175194fa",
+  "u/cs/20/079": "21019263jf",
+  "u/cs/20/080": "22186889jf",
+  "u/cs/20/081": "22173447ef",
+  "u/cs/20/082": "20354528af",
+  "u/cs/20/085": "21484946df",
+  "u/cs/20/086": "29841993ga",
+  "u/cs/20/088": "22145720hf",
+  "u/cs/20/089": "22181403ha",
+  "u/cs/20/090": "22174856da",
+  "u/cs/20/091": "22185786af",
+  "u/cs/20/092": "21165492ha",
+  "u/cs/20/093": "20351580ca",
+  "u/cs/20/094": "22181000ja",
+  "u/cs/20/096": "22174179ja",
+  "u/cs/20/097": "22177006bf",
+  "u/cs/20/098": "22190124ha",
+  "u/cs/20/099": "22188618jf",
+  "u/cs/20/100": "22176590af",
+  "u/cs/20/101": "22179748ia",
+  "u/cs/20/102": "22360718bau",
+  "u/cs/20/103": "29843300jf",
+  "u/cs/20/104": "22180310cf",
+  "u/cs/20/105": "22173711ff",
+  "u/cs/20/106": "20722208ef",
+  "u/cs/20/108": "22176518ia",
+  "u/cs/20/109": "21062509if",
+  "u/cs/20/110": "29722776df",
+  "u/cs/20/111": "22190252jf",
+  "u/cs/20/113": "22190252jf",
+  "u/cs/20/115": "29741643df",
+  "u/cs/20/116": "22183825cf",
+  "u/cs/20/119": "22174081ba",
+  "u/cs/20/121": "20951500ef",
+  "u/cs/20/122": "22186091jf",
+  "u/cs/20/123": "22187036cf",
+  "u/cs/20/125": "22189929jf",
+  "u/cs/20/126": "22182948ea",
+  "u/cs/20/128": "97442524gh",
+  "u/cs/20/130": "29709956ba",
+  "u/cs/20/132": "22187242ea",
+  "u/cs/20/133": "95292533cf",
+  "u/cs/20/135": "86295544gd",
+  "u/cs/20/136": "22263540ha",
+  "u/cs/20/137": "22184887df",
+  "u/cs/20/138": "65398039cd",
+  "u/cs/20/140": "20352834ca",
+  "u/cs/20/141": "22176568ca",
+  "u/cs/20/144": "20350449hau",
+  "u/cs/20/148": "29746240ea",
+  "u/cs/20/150": "29712958ba",
+  "u/cs/20/153": "22172485ba",
+  "u/cs/20/155": "76165437ja"
+};
+
+// Auto-generate example IDs up to 150 (OPTIONAL)
+for(let i=6;i<=150;i++){
+  const id = "CS" + String(i).padStart(3,"0");
+  students[id] = "pass" + String(i).padStart(3,"0");
+}
+
+function login(){
+  const id = document.getElementById("studentId").value.trim();
+  const pass = document.getElementById("password").value.trim();
+
+  if(id === "" || pass === ""){
+    Swal.fire("Error","Please fill all fields","warning");
+    return;
+  }
+
+  if(!students[id]){
+    Swal.fire({
+      icon:"error",
+      title:"Access Denied",
+      text:"You are not our course mate"
+    });
+    return;
+  }
+
+  if(students[id] !== pass){
+    Swal.fire({
+      icon:"error",
+      title:"Wrong Password",
+      text:"Invalid password"
+    });
+    return;
+  }
+
+  // Save login state
+  localStorage.setItem("loggedInStudent", id);
+
+  Swal.fire({
+    icon:"success",
+    title:"Login Successful",
+    text:"Welcome "+id,
+    timer:1200,
+    showConfirmButton:false
+  }).then(()=>{
+    window.location.href = "gallery.html";
+  });
+}
+
+if(localStorage.getItem("loggedInStudent")){
+  window.location.href = "gallery.html";
+}
