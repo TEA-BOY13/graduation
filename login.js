@@ -108,7 +108,8 @@ const students = {
   "u/cs/20/148": "29746240ea",
   "u/cs/20/150": "29712958ba",
   "u/cs/20/153": "22172485ba",
-  "u/cs/20/155": "76165437ja"
+  "u/cs/20/155": "76165437ja",
+  "u/cs/21/155": "07064409797"
 };
 
 // Auto-generate example IDs up to 150 (OPTIONAL)
